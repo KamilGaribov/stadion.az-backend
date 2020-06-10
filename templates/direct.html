@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/direct.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div id="detail">
+    <h2>Stadion: {{stadion.name}}</h2>
+    <h3>Seher: {{stadion.city}}</h3>
+    <h3>Rayon: {{stadion.district}}</h3>
+    <h3>Metro: {{stadion.metro}}</h3>
+    <h3>Unvan: {{stadion.adress}}</h3>
+    <h3>Ortuk: {{stadion.floor}}</h3>
+    <h3>Olcu: {{stadion.size}}</h3>
+    <h3>Qiymet: {{stadion.price}} azn</h3>
+    {% if stadion.cover %}
+    <h3>Ustu: qapali</h3>
+    {% else %}
+    <h3>Ustu: aciq</h3>
+    {% endif %}
+    {% if stadion.cafe %}
+    <h3>Kafe: var</h3>
+    {% else %}
+    <h3>Kafe: yoxdu</h3>
+    {% endif %}
+    {% if stadion.park %}
+    <h3>Parking: var</h3>
+    {% else %}
+    <h3>Parking: yoxdu</h3>
+    {% endif %}
+    {% if stadion.video %}
+    <h3>Video: var</h3>
+    {% else %}
+    <h3>Video: yoxdu</h3>
+    {% endif %}
+    <h3>Sifaris sayi: {{stadion.ordered}}</h3>
+    <h3>Ulduz: {{stadion.star}}</h3>
+</div>
+
+
+<div id="time">
+    <table style="width:20%">
+        <tr>
+          <th>Gun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th>Sun</th>
+        </tr>
+        <tr>
+            <th>21:00</th>
+            {% for i in hour %}
+                {% if i.nine %}
+                    <td><button>Dolu</button></td>
+                {% else %}
+                    <td><button>Bos</button></td>
+                {% endif %}
+            {%endfor%}
+        </tr>
+        <tr>
+            <th>22:00</th>
+                {% for i in hour %}
+                    {% if i.ten %}
+                        <td><button>Dolu</button></td>
+                {% else %}
+                        <td><button>Bos</button></td>
+                {% endif %}
+            {%endfor%}
+        </tr>
+        <tr>
+            <th>23:00</th>
+            {% for i in hour %}
+                {% if i.eleven %}
+                    <td><button>Dolu</button></td>
+                {% else %}
+                    <td><button>Bos</button></td>
+                {% endif %}
+            {%endfor%}
+        </tr>
+        <tr>
+            <th>24:00</th>
+            {% for i in hour %}
+                {% if i.twelve %}
+                    <td><button>Dolu</button></td>
+                {% else %}
+                    <td><button>Bos</button></td>
+                {% endif %}
+            {%endfor%}
+        </tr>
+    </table>
+
+    <div id="reserve">
+        <h3>Sifaris verdiyiniz vaxt: </h3>
+        <form action="{% url 'stadion:order' stadion.id %}">
+            <input type="text" name="day" id="day" onkeydown="return false" autocomplete="off">
+            <input type="number" name="hour" id="hour" onkeydown="return false" autocomplete="off">
+            <button type="submit">Sifaris ver</button>
+        </form>
+    </div>
+</div>
+</div>
+
+<div id="imagediv">
+    {% for i in image %}
+        <img src="{{i.image.url}}" alt="">
+    {% endfor %}
+</div>
+
+<div id="feedback">
+    {% for i in feedback %}
+        <div id="feedbackcard">
+            <h3>User: {{i.user}}</h3>
+            <h3>Ulduz: {{i.stars}}</h3>
+            {% if i.comment %}
+            <h3>Koment: {{i.comment}}</h3>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+<script src="{% static 'js/direct.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,38 @@
+#detail{
+    float: left;
+}
+#time{
+    margin-top: 20px;
+    margin-left: 50px;
+    float: left;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+th{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#time #reserve{
+    margin-top: 20px;
+    border: 1px solid white;
+}
+td button{
+    width: 100%;
+    height: 100%;
+}
+#feedbackcard{
+    border: solid 1px;
+}

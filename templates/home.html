@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<h1>Stadion.az</h1>
+
+<form action="{% url 'stadion:filter' %}" method="GET">
+    <label for="search">Axtaris</label><input onkeyup="searchstdn()" type="text" name="search" id="search" placeholder="stadionun adini yazin" autocomplete="off">
+    <button type="submit">Axtar</button>
+</form>
+
+<div id="searchlist">
+    <ul></ul>
+</div>
+
+<br> <hr>
+
+
+
+<form action="{% url 'stadion:filter' %}" method="GET">
+
+    <label for="city">Seher</label>
+    <select name="city" id="city">
+        <option value="" selected hidden disabled>Seher</option>
+        {% for i in city %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+
+    <label for="district">Rayon</label>
+    <select name="district" id="district">
+        <option value="district" selected hidden disabled>Rayon</option>
+        {% for i in district %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="metro">Metro</label>
+    <select name="metro" id="metro">
+        <option value="metro" selected hidden disabled>Metro</option>
+        {% for i in metro %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="floor">Ortuk</label>
+    <select name="floor" id="floor">
+        <option value="" selected hidden disabled>Ortuk</option>
+        {% for i in floor %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="size">Olcu</label>
+    <select name="size" id="size">
+        <option value="size" selected hidden disabled>Olcu</option>
+        {% for i in size %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <hr>
+
+    
+    <label for="min">Qiymet</label><input type="number" name="min" id="min" placeholder="minimum"><input type="number" name="max" placeholder="maksimum">
+    <br>
+    <hr>
+    <label for="cover">Cover</label><input type="checkbox" name="cover" id="cover">
+    <label for="cafe">Cafe</label><input type="checkbox" name="cafe" id="cafe">
+    <label for="park">Parking</label><input type="checkbox" name="park" id="park">
+    <label for="video">Video</label><input type="checkbox" name="video" id="video"> <br> <hr>
+
+    <button type="submit">Axtar</button>
+</form>
+<br><hr>
+
+<h3>Tarixe gore</h3>
+<form action="{% url 'stadion:filter' %}">
+    <label for="day">Tarix</label>
+    <select name="day" id="day">
+        <option value="day" selected hidden disabled>Tarix</option>
+        {% for i in day %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="hour">Saat</label>
+    <select name="hour" id="hour">
+        <option value="hour" selected hidden disabled>Saat</option>
+        {% for i in hour %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Axtar</button>
+</form>
+
+
+
+<script src="{% static 'js/apisearch.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+{% endblock %}

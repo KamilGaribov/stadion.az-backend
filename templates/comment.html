@@ -1,0 +1,18 @@
+<form action="">
+    <label for="day">Tarix</label>
+    <select name="day" id="day">
+        <option value="day" selected hidden disabled>Tarix</option>
+        {% for i in day %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+    <br> <hr>
+
+    <label for="hour">Saat</label>
+    <select name="hour" id="hour">
+        <option value="hour" selected hidden disabled>Saat</option>
+        {% for i in size %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+</form>

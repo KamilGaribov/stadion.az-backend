@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stadion.az</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block css %}
+    {% endblock %}
+    
+</head>
+<body>
+    <div id="navbar">
+        <ul>
+            <li><a class="active" href="{% url 'main:home' %}">Ana Sehife</a></li>
+            <li><a href="{% url 'stadion:home' %}">Stadionlar</a></li>
+            <li><a href="http://localhost:8000/api/stadion">API</a></li>
+            <li><a href="{% url 'account:registration' %}">Qeydiyyat</a></li>
+            <li><a href="{% url 'account:login' %}">Giris</a></li>
+            <li><a href="{% url 'account:logout' %}">Cixis</a></li>
+            {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                    <li><a href="">super {{user.username}}</a></li>
+                {% else %}
+                <li><a href="">{{user.username}}</a></li>
+                {% endif %}
+            {% else %}
+            <li><a href="">Unknown</a></li>
+            {% endif %}
+            <li><a href="{% url 'team:reg' %}">Komanda qeydiyyati</a></li>
+        </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

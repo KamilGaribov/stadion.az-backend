@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/order.css' %}">
+{% endblock %}
+
+{% block content %}
+<h4>Tarix: {{day}}</h4>
+<h4>Saat: {{hour}}</h4>
+<h2>Sifaris verildi</h2>
+
+
+<h3>Oyundan sonra gelen msj</h3>
+
+<form action="{% url 'stadion:feedback' id %}">
+  <label for="star">Ulduz</label>
+  <select name="star" id="star">
+      <option value="star" selected hidden disabled>Ulduz</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+  </select>
+
+  <label for="comment">Stadiondan memnun qaldiniz mi?</label>
+  <textarea name="comment" id="comment" cols="50" rows="5"></textarea>
+  <button type="submit">Gonder</button>
+</form>
+
+
+{% endblock %}
+
+<script src="{% static 'js/order.js' %}"></script>
